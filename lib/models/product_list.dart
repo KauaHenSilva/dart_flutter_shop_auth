@@ -40,7 +40,7 @@ class ProductList with ChangeNotifier {
   }
 
   Future<void> saveProduct(Map<String, dynamic> data) {
-    bool hasId = data['id'] != null;
+    bool hasId = data['id'] != '';
 
     final product = Product(
       id: hasId ? data['id'] as String : Random().nextDouble().toString(),

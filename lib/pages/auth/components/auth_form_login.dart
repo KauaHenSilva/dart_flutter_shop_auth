@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:provider/provider.dart';
 import 'package:shop/components/my_form_builder_text_field.dart';
 import 'package:shop/components/my_form_builder_text_field_obscure.dart';
+import 'package:shop/models/auth.dart';
 import 'package:shop/utils/app_routes.dart';
 
 class AuthFormLogin extends StatefulWidget {
@@ -31,7 +33,17 @@ class _AuthFormState extends State<AuthFormLogin> {
     setState(() {
       isloading = true;
     });
-    Future.delayed(const Duration(seconds: 2)).then((value) {
+
+    final authProvider = Provider.of<Auth>(context, listen: false);
+    authProvider
+        .signIn(loginValues['e-mail'] as String, loginValues['senha'] as String)
+        .onError((error, stackTrace) {
+      authProvider.showDialogError(context, error.toString()).then((value) {
+        setState(() {
+          isloading = false;
+        });
+      });
+    }).then((value) {
       setState(() {
         isloading = false;
       });
