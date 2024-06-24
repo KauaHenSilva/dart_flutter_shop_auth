@@ -46,3 +46,6 @@ app.*.map.json
 
 build/*
 !build/web
+
+firebase.json
+firebase_options.dart

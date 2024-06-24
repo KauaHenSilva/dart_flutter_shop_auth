@@ -29,7 +29,7 @@ class MyFormBuilderTextField extends StatelessWidget {
         prefixText: ' ',
       ),
       validator: validators,
-      onChanged: (value) => values[name],
+      onChanged: (value) =>  values[name] = value ?? '',
     );
   }
 }
