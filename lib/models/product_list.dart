@@ -6,7 +6,11 @@ import 'package:shop/models/product.dart';
 import 'package:shop/utils/constants.dart';
 
 class ProductList with ChangeNotifier {
-  final List<Product> _items = [];
+  String _token;
+  // ignore: prefer_final_fields
+  List<Product> _items = [];
+
+  ProductList(this._token, this._items);
 
   List<Product> get items => [..._items];
   List<Product> get favoriteItems =>
@@ -20,7 +24,7 @@ class ProductList with ChangeNotifier {
     _items.clear();
 
     final response = await http.get(
-      Uri.parse('${Constants().urlProducts}.json'),
+      Uri.parse('${Constants().urlProducts}.json?auth=$_token'),
     );
     if (response.body == 'null') return;
     Map<String, dynamic> data = jsonDecode(response.body);
@@ -59,7 +63,7 @@ class ProductList with ChangeNotifier {
 
   Future<void> addProduct(Product product) async {
     final response = await http.post(
-      Uri.parse('${Constants().urlProducts}.json'),
+      Uri.parse('${Constants().urlProducts}.json?auth=$_token'),
       body: jsonEncode(
         {
           "title": product.title,
@@ -88,7 +92,7 @@ class ProductList with ChangeNotifier {
 
     if (index >= 0) {
       await http.patch(
-        Uri.parse('${Constants().urlProducts}/${product.id}.json'),
+        Uri.parse('${Constants().urlProducts}/${product.id}.json?auth=$_token'),
         body: jsonEncode(
           {
             "title": product.title,
@@ -113,7 +117,7 @@ class ProductList with ChangeNotifier {
       notifyListeners();
 
       final response = await http.delete(
-        Uri.parse('${Constants().urlProducts}/${product.id}.json'),
+        Uri.parse('${Constants().urlProducts}/${product.id}.json?auth=$_token'),
       );
 
       if (response.statusCode >= 400) {
