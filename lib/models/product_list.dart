@@ -6,8 +6,8 @@ import 'package:shop/models/product.dart';
 import 'package:shop/utils/constants.dart';
 
 class ProductList with ChangeNotifier {
+  // ignore: prefer_final_fields
   String _userId;
-
   // ignore: prefer_final_fields
   String _token;
   // ignore: prefer_final_fields
