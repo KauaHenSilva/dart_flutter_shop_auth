@@ -24,7 +24,7 @@ class _AuthFormState extends State<AuthFormLogin> {
   void initState() {
     super.initState();
     loginValues = {
-      'e-mail': '',
+      'e-mail': const String.fromEnvironment('email_debug'),
       'senha': '',
     };
   }
@@ -109,7 +109,7 @@ class _AuthFormState extends State<AuthFormLogin> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('já possui uma conta?'),
+                const Text('Não possui uma conta?'),
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pushNamed(AppRoutes.authCadrast);

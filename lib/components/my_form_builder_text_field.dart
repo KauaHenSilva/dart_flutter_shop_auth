@@ -20,6 +20,7 @@ class MyFormBuilderTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return FormBuilderTextField(
       name: name,
+      initialValue: values[name] as String?,
       decoration: InputDecoration(
         floatingLabelBehavior: FloatingLabelBehavior.never,
         border: const OutlineInputBorder(gapPadding: 12),

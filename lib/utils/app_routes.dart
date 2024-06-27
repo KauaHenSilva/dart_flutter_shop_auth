@@ -1,7 +1,6 @@
 class AppRoutes {
-  static const authHome = '/';
+  static const authLogin = '/';
   static const authCadrast = '/auth-cadrast';
-  static const authLogin = '/auth-login';
   static const home = '/home';
   static const productDetail = '/product-detail';
   static const cart = '/cart';
