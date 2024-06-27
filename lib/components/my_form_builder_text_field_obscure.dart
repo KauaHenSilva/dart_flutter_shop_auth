@@ -18,8 +18,7 @@ class MyFormBuilderTextFieldObscure extends StatefulWidget {
   });
 
   @override
-  State<MyFormBuilderTextFieldObscure> createState() =>
-      _MyFormBuilderTextFieldObscureState();
+  State<MyFormBuilderTextFieldObscure> createState() => _MyFormBuilderTextFieldObscureState();
 }
 
 class _MyFormBuilderTextFieldObscureState

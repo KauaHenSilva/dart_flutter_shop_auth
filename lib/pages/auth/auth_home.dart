@@ -12,11 +12,22 @@ class AuthHome extends StatelessWidget {
     return Consumer<Auth>(
       builder: (context, auth, child) {
         return Scaffold(
-          body: auth.isAuth
-              ? const ProductsOverviewPage()
-              : const AuthPageLogin()
+          body: FutureBuilder(
+            future: auth.tryAutoLogin(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else {
+                return auth.isAuth
+                    ? const ProductsOverviewPage()
+                    : const AuthPageLogin();
+              }
+            },
+          ),
         );
-      }
+      },
     );
   }
 }

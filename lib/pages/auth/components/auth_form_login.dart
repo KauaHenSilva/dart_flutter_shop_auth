@@ -24,7 +24,7 @@ class _AuthFormState extends State<AuthFormLogin> {
   void initState() {
     super.initState();
     loginValues = {
-      'e-mail': '',
+      'e-mail': const String.fromEnvironment('email_debug'),
       'senha': '',
     };
   }
