@@ -108,7 +108,7 @@ class Auth with ChangeNotifier {
     _email = null;
     _userId = null;
     _expiryDate = null;
-    Store.saveMap('userData', {});
+    Store.remove('userData');
     clearLogoutTimer();
     notifyListeners();
   }
